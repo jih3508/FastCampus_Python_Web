@@ -4,6 +4,7 @@ from .models import Question, Answer
 from django.http import HttpResponseNotAllowed
 from .form import QuestionForm, AnswerForm
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import  login_required
 
 # Create your views here.
 
@@ -20,12 +21,14 @@ def detail(request, question_id):
     context = {'question': question}
     return render(request, 'pybo/question_detail.html', context)
 
+@login_required(login_url='common:login')
 def answer_create(request, question_id):
     question = get_object_or_404(Question, pk= question_id)
     if request.method == "POST":
         form = AnswerForm(request.POST)
         if form.is_valid():
             answer = form.save(commit=False)
+            answer.author = request.user # author 속성에 로그인 계정 저장
             answer.create_date = timezone.now()
             answer.question = question
             answer.save()
@@ -35,11 +38,13 @@ def answer_create(request, question_id):
     context = {'question' : question, 'form' : form}
     return render(request, 'pybo/question_detail.html', context)
 
+@login_required(login_url='common:login')
 def question_create(requset):
     if requset.method == "POST":
         form = QuestionForm(requset.POST)
         if form.is_valid():
             question = form.save(commit=False) # 임시 저장하여 question 객체르 리턴받는다.
+            question.author = requset.user # author 속성에 로그인 계정 저장
             question.create_date = timezone.now() # 실제 저장을 위해 작성일시를 설정한다.
             question.save() # 데이터를 실제로 저장한다.
             return redirect('pybo:index')
