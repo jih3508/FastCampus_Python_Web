@@ -89,3 +89,27 @@ print(z)
 print(3 in z)
 print(z.index(5))
 print(z.count(1))
+
+# 산술, 관계, 논리 연산자
+# 산술 > 관계 > 논리 순서로 적용
+print('ex1 : ', 5 + 10 > 0 and not 7 + 3 == 10)
+
+score1 = 90
+score2 = 'A'
+
+if score1 >= 89 and score2 == 'A':
+    print("합격하셨습니다.")
+else:
+    print("죄송합니다. 불합격입니다.")
+
+# 다중조건문
+num = 82
+
+if num >= 90:
+    print("num 등급 A" , num)
+elif num >= 80:
+    print("num 등급 B" , num)
+elif num >= 70:
+    print("num 등급 C" , num)
+else:
+    print("꽝")
