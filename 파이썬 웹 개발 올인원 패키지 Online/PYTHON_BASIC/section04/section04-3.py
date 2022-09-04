@@ -113,3 +113,17 @@ elif num >= 70:
     print("num 등급 C" , num)
 else:
     print("꽝")
+
+# 중첩조건문
+age = 27
+height = 175
+
+if age >= 20:
+    if height >= 170:
+        print("A지망 지원 가능")
+    elif height >= 160:
+        print("B지망 지원 가능")
+    else:
+        print("지원 불가")
+else:
+    print("20세 이상 지원 가능")
