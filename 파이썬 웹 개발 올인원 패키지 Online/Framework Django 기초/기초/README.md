@@ -7,3 +7,21 @@
 
 ## 웹 프레임워크
 - 웹 개발에 필요한 기본적인 구조와 코드(클래스, 함수 등)가 만들어져 있음
+
+## 장고 프로젝트 만들기
+### 1. 가상환경 만들기
+```
+> mkdir 3rd
+> pip install --upgrade pip # 관리자 모드 실행
+> pip3 install virtualenv # 가상환경 패키지 만들기
+> virtualenv fcdjango_venv # 가상환경 만들기
+> fcdjango_venv\Scripts\activate // 가상환경 실행
+```
+
+### 2. 장고 프로젝트 생성
+```
+> pip install Django==2.1.7 # 장고 설치 하기
+> django-admin startproject fc_community # 프로젝트 생성
+> cd fc_community
+> django-admin startapp board 
+```
